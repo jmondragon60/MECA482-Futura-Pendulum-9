@@ -42,12 +42,12 @@ The Furuta pendulum has been in use since 1992, when it was invented by Katsuhis
 </p>
 
 ## 2. Objectives
-
 - Produce a controller that balances a rotary inverted pendulum in its upright position starting from its downright position.
 - When powered on the pendulum must stay upright (in the vertical axis). When the pendulum is knocked down or moved it must be able to return to its upright position by only using a motor that rotates in the horizontal axis.
 - simulate the system in Coppelia while being connected to MATLAB
 - Provide the mathematical model of the system
 - If the system contains hardware, the design of hardware should consist the necessary architectural explanations such as hardware and software relationships.
+
 ## 3. Modeling
 The system consists of 2 masses, arm 1 m in the horizontal plane, and arm 2 the pendulum, which rotates freely in the vertical plane . In addition to a link connecting arm 1 and the pendulum, that is fixed. Figure 2 depicts a DC motor applying torque to arm 1 m, which moves horizontally then controlling the pendulum so it may remain in the upright position. The torque t is a critical component used in the feedback control system, which is done using a state-space model. The angular rotation from arm 1, 0is measured in the horizontal plane, where it is assumed that the counter clockwise direction is considered to be positive. The angular rotation from the pendulum 1is measured in the vertical plane, where it is also to be assumed that the counter clockwise direction is positive. The system is stable when the pendulum arm is hanging down in a stable position 1=0.
 <p align="center">  
