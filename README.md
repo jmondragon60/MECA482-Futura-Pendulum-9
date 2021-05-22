@@ -20,9 +20,19 @@
     Advanced Manufacturing Chico, Ca 95929.
 </p>
 
-  
-  
-## Introduction
+#### Table Of Contents
+- [1. Introduction](#1-introduction)
+- [2. Objectives](#2-objectives)
+- [3. Modeling](#3-modeling)
+    - [3a. Linear Space Model](#3a-linear-space-model)
+- [4. Sensor Calibration](#4-sensor-calibration)
+- [5. Controller Design and Simulations](#5-controller-design-and-simulations)
+    - [5a. Controller within MATLAB](#5a-controller-within-matlab)
+    - [5b. Interface within MATLAB](#5b-interface-within-matlab)
+- [6. Results](#6-results)
+- [7. Reference](#7-references)
+
+## 1. Introduction
 The Furuta pendulum has been in use since 1992, when it was invented by Katsuhisa Furuta. The Furuta pendulum, or the rotational inverted pendulum consists of a driven arm rotating in the horizontal plane. In the following report is the design, implementation, and analyzation through state space representation of the Furuta pendulum, Figure 1 provides a depiction of the analyzed. The system will become balanced in real time using an engineered simulation, which is connected through a state space representation equation
 <p align="center">  
     <img src="photos/figure1.jpg">
@@ -31,14 +41,14 @@ The Furuta pendulum has been in use since 1992, when it was invented by Katsuhis
     
 </p>
 
-## Objectives
+## 2. Objectives
 
 - Produce a controller that balances a rotary inverted pendulum in its upright position starting from its downright position.
 - When powered on the pendulum must stay upright (in the vertical axis). When the pendulum is knocked down or moved it must be able to return to its upright position by only using a motor that rotates in the horizontal axis.
 - simulate the system in Coppelia while being connected to MATLAB
 - Provide the mathematical model of the system
 - If the system contains hardware, the design of hardware should consist the necessary architectural explanations such as hardware and software relationships.
-## Modeling
+## 3. Modeling
 The system consists of 2 masses, arm 1 m in the horizontal plane, and arm 2 the pendulum, which rotates freely in the vertical plane . In addition to a link connecting arm 1 and the pendulum, that is fixed. Figure 2 depicts a DC motor applying torque to arm 1 m, which moves horizontally then controlling the pendulum so it may remain in the upright position. The torque t is a critical component used in the feedback control system, which is done using a state-space model. The angular rotation from arm 1, 0is measured in the horizontal plane, where it is assumed that the counter clockwise direction is considered to be positive. The angular rotation from the pendulum 1is measured in the vertical plane, where it is also to be assumed that the counter clockwise direction is positive. The system is stable when the pendulum arm is hanging down in a stable position 1=0.
 <p align="center">  
     <img src="photos/figure2.png">
@@ -48,16 +58,16 @@ The system consists of 2 masses, arm 1 m in the horizontal plane, and arm 2 the 
 </p>
 
 
-### linear space model
+### 3a. Linear Space Model
 When deriving the system dynamics assumptions must be considered. Firstly the motor and arm 1 are rigidly coupled and inelastic. In addition the coordinate axes of arms 1 and 2 are the principal axes of inertia. However, the motor rotor inertia is also assumed to be negligible, so the viscous damping is the only one to be considered.      
 State-space equation is used as a mathematical model that represents the pendulum’s physical system. The pendulum system is represented by a set of inputs, outputs, and state variables related by first-order differential equations. Eq 1 and Eq 2 can be found below representing 
 
 
-## Sensor Calibration
+## 4. Sensor Calibration
 
-## Controller Design and Simulations (optional)
+## 5. Controller Design and Simulations
 
-### Controller within MATLAB
+### 5a. Controller within MATLAB
 ```
 function T = controller(theta0, dtheta0, theta1, dtheta1)
     L0 = 0.12;
@@ -86,7 +96,7 @@ function T = controller(theta0, dtheta0, theta1, dtheta1)
     states = [theta0, dtheta0, theta1, dtheta1];
     T = K*states';
 ```
-### Interface within MATLAB
+### 5b. Interface within MATLAB
 ```
 %initialize API and connect to server (CoppeliaSim) in synchronous mode
 sim=remApi('remoteApi');
@@ -139,9 +149,8 @@ sim.simxPauseSimulation(clientID,sim.simx_opmode_blocking);
 sim.simxFinish(clientID);
 sim.delete();
 ```
-## Appendix A: Simulation Code
-
-## References
+## 6. Results
+## 7. References
 Duart, J. L., et al. "Dynamic modeling and simulation of a rotational inverted pendulum." Journal of Physics: Conference Series. Vol. 792. No. 1. IOP Publishing, 2017.<br/>
 
 Lbeatu. “Lbeatu/Furuta-Pendulum-Simulink-Model-GUI-on-MATLAB-2017b.” GitHub, https://github.com/lbeatu/Furuta-Pendulum-Simulink-Model-GUI-on-MATLAB-2017b.<br/>
