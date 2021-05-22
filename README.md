@@ -12,7 +12,7 @@
 </p>
 <p align="center">    
     
-<img src=photos/csushicologo.png>
+<img src="photos/csushicologo.png">
     
 </p>
 <p align="center">   
